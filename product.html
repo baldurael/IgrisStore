@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detail Produk</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1 id="title">Loading...</h1>
+  </header>
+
+  <main style="text-align:center; padding: 2rem;">
+    <img id="image" src="" alt="Produk" style="width: 90%; max-width: 400px; border-radius: 10px;" />
+    <p id="desc" style="margin: 1rem 0;"></p>
+    <h2 id="price"></h2>
+    <a id="buy" href="#" class="card" style="display:inline-block; background:#5f00ff; padding:10px 20px; border-radius:8px;">Beli Sekarang</a>
+    <p style="margin-top: 20px;"><a href="IgrisStore.html">⬅️ Kembali</a></p>
+  </main>
+
+  <script>
+    const produk = {
+      brainrot: {
+        title: "Steal A Brainrot",
+        desc: "Script ESP, Speed, Teleport untuk game Brainrot.",
+        price: "Rp 5.000",
+        image: "https://via.placeholder.com/400x200",
+        buy: "https://trakteer.id/mangnathan/tip?amount=5000"
+      },
+      igrishub: {
+        title: "Igris Hub V3",
+        desc: "Script GUI full fitur Rayfield: ESP, Goto, Teleport.",
+        price: "Rp 10.000",
+        image: "https://via.placeholder.com/400x200",
+        buy: "https://trakteer.id/mangnathan/tip?amount=10000"
+      },
+      gachabot: {
+        title: "Gacha Garden Bot",
+        desc: "Bot otomatis panen, siram, gacha di Grow A Garden.",
+        price: "Rp 7.500",
+        image: "https://via.placeholder.com/400x200",
+        buy: "https://trakteer.id/mangnathan/tip?amount=7500"
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const p = produk[id];
+
+    if (p) {
+      document.getElementById("title").textContent = p.title;
+      document.getElementById("desc").textContent = p.desc;
+      document.getElementById("price").textContent = p.price;
+      document.getElementById("image").src = p.image;
+      document.getElementById("buy").href = p.buy;
+    } else {
+      document.body.innerHTML = "<h2>Produk tidak ditemukan.</h2><p><a href='IgrisStore.html'>Kembali</a></p>";
+    }
+  </script>
+</body>
+</html>

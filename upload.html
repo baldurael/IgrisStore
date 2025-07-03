@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Produk</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+  <script src="firebase-config.js"></script>
+</head>
+<body>
+  <h1>Upload Produk</h1>
+  <form id="uploadForm">
+    <input type="text" placeholder="Nama Produk" id="title" required><br>
+    <input type="text" placeholder="Harga" id="price" required><br>
+    <input type="text" placeholder="Link Gambar" id="image" required><br>
+    <select id="category">
+      <option value="Steal A Brainrot">Steal A Brainrot</option>
+      <option value="Grow A Garden">Grow A Garden</option>
+    </select><br><br>
+    <button type="submit">Upload</button>
+  </form>
+
+  <script>
+    const db = firebase.firestore();
+    const form = document.getElementById("uploadForm");
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      const data = {
+        title: form.title.value,
+        price: form.price.value,
+        image: form.image.value,
+        category: form.category.value
+      };
+      db.collection("products").add(data).then(() => {
+        alert("Produk berhasil diupload!");
+        window.location.href = "index.html";
+      });
+    };
+  </script>
+</body>
+</html>

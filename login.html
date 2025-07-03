@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Igris Store</title>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+  <script src="firebase-config.js"></script>
+</head>
+<body>
+  <h1>Login</h1>
+  <button id="googleLogin">Login with Google</button>
+
+  <script>
+    const provider = new firebase.auth.GoogleAuthProvider();
+    document.getElementById("googleLogin").onclick = () => {
+      firebase.auth().signInWithPopup(provider).then(() => {
+        window.location.href = "index.html";
+      });
+    };
+  </script>
+</body>
+</html>
